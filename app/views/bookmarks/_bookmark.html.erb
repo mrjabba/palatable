@@ -1,0 +1,19 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table id="bookmarks_table" class="grid_shaded">
+<tr>
+  <th title="Title"><%= sortable "title", "Name"  %></th>
+  <th title="Url"><%= sortable "url"  %></th>
+  <th title="Tags"><%= sortable "tags"  %></th>
+</tr>
+<% for bookmark in @bookmarks %>
+<tr>
+  <td><%= link_to "#{bookmark.title}", bookmark %></td>
+  <td><%= bookmark.url %></td>
+  <td><%= bookmark.tags %></td>
+</tr>
+<% end %>
+</table>
+<div class="page_info"><%= page_entries_info @bookmarks %></div>
+<%= will_paginate %>

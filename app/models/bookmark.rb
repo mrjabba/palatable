@@ -6,4 +6,13 @@ class Bookmark < ActiveRecord::Base
   validates :url, :presence => true,
                   :length   => { :maximum => 255 }
 
+
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 end
