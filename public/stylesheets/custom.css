@@ -363,3 +363,8 @@ input.button {
     height: 1%; }
   *:first-child+html .pagination {
     overflow: hidden; }
+
+textarea {
+  overflow: auto;
+  height: 50px;  
+}
