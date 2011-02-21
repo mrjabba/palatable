@@ -10,13 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110103230621) do
+ActiveRecord::Schema.define(:version => 20110221192206) do
 
   create_table "bookmarks", :force => true do |t|
     t.string   "title"
     t.string   "url"
-    t.string   "tags"
     t.string   "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bundles", :force => true do |t|
+    t.integer  "bookmark_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bundles", ["bookmark_id", "tag_id"], :name => "index_bundles_on_bookmark_id_and_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

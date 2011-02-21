@@ -5,13 +5,17 @@
 <tr>
   <th title="Title"><%= sortable "title", "Name"  %></th>
   <th title="Url"><%= sortable "url"  %></th>
-  <th title="Tags"><%= sortable "tags"  %></th>
 </tr>
 <% for bookmark in @bookmarks %>
 <tr>
   <td><%= link_to "#{bookmark.title}", bookmark %></td>
   <td><%= bookmark.url %></td>
-  <td><%= bookmark.tags %></td>
+  <td>
+  <%= link_to "Remove", bookmark, :method => :delete,
+                                   :confirm => "Remove this bookmark?",
+                                   :title => "Remove",
+                                   :class => "action_button_nar round" %>
+  </td>
 </tr>
 <% end %>
 </table>

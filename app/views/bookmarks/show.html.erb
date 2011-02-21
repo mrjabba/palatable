@@ -6,7 +6,8 @@
     <ul>
         <li><%= link_to "Edit", "#{@bookmark.id}/edit", :class => "action_button round"  %></li>
         <li><%= link_to "Add Bookmark", "/bookmarks/new", :class => "action_button round" %></li>
-      <li><%= link_to "All Bookmarks", bookmarks_path, :class => "action_button round" %></li>
+        <li><%= link_to "All Bookmarks", bookmarks_path, :class => "action_button round" %></li>
+        <li><%= link_to "Add Tag", new_bundle_path + "?bookmark_id=#{@bookmark.id}", :class => "action_button round"  %></li>
     </ul>
   </nav>
 </div>
@@ -20,10 +21,33 @@
     <span><%= @bookmark.url %> </span>
   </div>
   <div class="field">
-    <label>Tags </label>
-    <span><%= @bookmark.tags %> </span>
-  </div>
-  <div class="field">
     <label>Notes</label>
     <span><%= @bookmark.notes %> </span>
   </div>
+
+<h3>Tags</h3>
+
+<% unless @bookmark.tags.empty? %>
+
+  <table id="tags_table" class="grid_shaded">
+  <tr>
+  <th title="Name">Name</th>
+  </tr>
+  <td>
+  <% for bundle in @bookmark.bundles %>
+  <tr>
+    <td><%= link_to "#{bundle.tag.name}", bundle.tag %></td>
+    <td>
+    <%= link_to "Remove", bundle, :method => :delete,
+                                     :confirm => "Remove from this bookmark?",
+                                     :title => "Remove",
+                                     :class => "action_button_nar round" %>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+<% end %>
+
+
+
+

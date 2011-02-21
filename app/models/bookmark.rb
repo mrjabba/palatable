@@ -1,5 +1,8 @@
 class Bookmark < ActiveRecord::Base
-  attr_accessible :title, :url, :tags, :notes
+  attr_accessible :title, :url, :notes
+
+  has_many :bundles
+  has_many :tags, :through => :bundles    
 
   validates :title, :presence => true,
                   :length   => { :maximum => 50 }

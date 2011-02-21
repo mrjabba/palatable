@@ -48,7 +48,7 @@ describe BookmarksController do
     
     describe "failure" do
       before(:each) do
-        @attr = { :title => "", :url => "", :tags => ""}
+        @attr = { :title => "", :url => "", :notes => ""}
       end
       
       it "should render the 'edit' page" do
@@ -65,7 +65,7 @@ describe BookmarksController do
     
     describe "success" do
       before(:each) do
-        @attr = { :title => "Something", :url => "http://foooo.com", :tags => "stuff things" }
+        @attr = { :title => "Something", :url => "http://foooo.com", :notes => "stuff things" }
       end
       
       it "should change the bookmark's attributes" do
@@ -74,7 +74,7 @@ describe BookmarksController do
         @bookmark.reload
         @bookmark.title.should  == bookmark.title
         @bookmark.url.should  == bookmark.url
-        @bookmark.tags.should  == bookmark.tags
+        @bookmark.notes.should  == bookmark.notes
       end
       
       it "should redirect to the bookmark show page" do
@@ -165,7 +165,7 @@ describe BookmarksController do
 
         before(:each) do
         #sign_in Factory(:user)
-         @attr = { :title => "", :url => "", :tags => "" } 
+         @attr = { :title => "", :url => "", :notes => "" } 
         end
 
         it "should not create a bookmark" do
@@ -190,7 +190,7 @@ describe BookmarksController do
 
         before(:each) do
         #sign_in Factory(:user)
-         @attr = { :title => "fave page", :url => "http://zzz.com", :tags => "apples oranges" } 
+         @attr = { :title => "fave page", :url => "http://zzz.com", :notes => "apples oranges" } 
         end
 
         it "should create a bookmark" do
@@ -214,6 +214,25 @@ describe BookmarksController do
   end
   
   describe "DELETE 'destroy'" do
-  end
+    before(:each) do
+      @bookmark = Factory(:bookmark)
+   end
+    
+    describe "success" do
+
+      it "should destroy the bookmark" do
+        lambda do 
+          delete :destroy, :id => @bookmark
+        end.should change(Bookmark, :count).by(-1)
+      end
+
+      it "should redirect to the bookmarks show page" do
+        delete :destroy, :id => @bookmark
+        response.should redirect_to bookmarks_path
+      end
+
+    end
+
+  end  
 
 end

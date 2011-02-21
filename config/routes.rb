@@ -2,6 +2,8 @@ Palatable::Application.routes.draw do
   
 #  devise_for :users
   resources :bookmarks
+  resources :tags
+  resources :bundles
 
   root :to => "home#index"
 
