@@ -23,4 +23,6 @@ describe Bookmark do
     bookmark.should_not be_valid
   end
 
+  
+  
 end
