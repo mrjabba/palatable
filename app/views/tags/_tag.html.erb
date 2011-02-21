@@ -1,0 +1,15 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table id="tags_table" class="grid_shaded">
+<tr>
+  <th title="Name"><%= sortable "name"  %></th>
+</tr>
+<% for tag in @tags %>
+<tr>
+  <td><%= link_to "#{tag.name}", tag %></td>
+</tr>
+<% end %>
+</table>
+<div class="page_info"><%= page_entries_info @tags %></div>
+<%= will_paginate %>

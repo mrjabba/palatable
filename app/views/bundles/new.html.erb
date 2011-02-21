@@ -1,0 +1,17 @@
+<h1>New Bundle</h1>
+
+<%= form_for(@bundle) do |f| %>
+  <%= render 'shared/error_messages_bundle', :object => f.object %>
+  <div class="field">
+    <%= f.label :tag %><br />
+    <%= f.select :tag_id, Tag.order("name").collect { |t| [ "#{t.name}", t.id ] } %>
+
+    <%= f.hidden_field :bookmark_id %>
+  </div>
+
+<div class="actions">
+    <%= f.submit "Create", :class => "button round" %>
+    <input type="button" id="cancelBundleNew" value="Cancel" class="button round" />
+  </div>
+<% end %>
+

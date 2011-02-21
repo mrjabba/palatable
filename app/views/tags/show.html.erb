@@ -1,0 +1,17 @@
+
+<h1><%= @tag.name %></h1>
+
+<div class="actions">
+  <nav class="round">
+    <ul>
+        <li><%= link_to "Edit", "#{@tag.id}/edit", :class => "action_button round"  %></li>
+        <li><%= link_to "Add Tag", "/tags/new", :class => "action_button round" %></li>
+      <li><%= link_to "All Tags", tags_path, :class => "action_button round" %></li>
+    </ul>
+  </nav>
+</div>
+
+  <div class="field">
+    <label>Name </label>
+    <span><%= @tag.name %> </span>
+  </div>
