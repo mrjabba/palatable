@@ -6,6 +6,7 @@ class Tag < ActiveRecord::Base
   validates :name, :presence => true,
                   :length   => { :maximum => 50 }
 
+  #TODO add a unique constraint to name. we want each tag name to be stored only once
 
   def self.search(search)
     if search

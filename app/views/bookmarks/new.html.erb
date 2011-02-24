@@ -15,6 +15,12 @@
     <%= f.text_area :notes, :cols => 20, :rows => 5, :placeholder => "Describe your bookmark. Optional." %>
   </div>
 
+  <div class="field">
+    <%= f.label :tags %><br />
+    <input type="text" name="tag_list" id="tag_list" placeholder="Separate tags with spaces." />
+  </div>
+
+
 <div class="actions">
     <%= f.submit "Create", :class => "button round" %>
     <input type="button" id="cancelBookmarkNew" value="Cancel" class="button round" />

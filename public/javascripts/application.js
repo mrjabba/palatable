@@ -7,4 +7,16 @@ $(function() {
     $.get(this.action, $(this).serialize(), null, "script");
     return false;
   });  
+  
+  $(".new_bookmark, .edit_bookmark").submit(function() {
+    var tags = $("#tag_list").val().split(" ");
+	  $.each(tags, function(index) {
+			  var tag = tags[index];
+        if(tag != "") {
+          $('<input type="hidden" name="bookmark[tags_attributes][' + index + '][name]" value="' + tag + '"/>').insertAfter('#tag_list');
+        }
+		});
+    return true;
+  });    
+  
 });

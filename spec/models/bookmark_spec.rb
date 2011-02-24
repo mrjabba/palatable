@@ -24,5 +24,4 @@ describe Bookmark do
   end
 
   
-  
 end
